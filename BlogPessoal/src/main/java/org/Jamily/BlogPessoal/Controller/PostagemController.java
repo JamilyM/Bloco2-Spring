@@ -3,7 +3,7 @@ package org.Jamily.BlogPessoal.Controller;
 import java.util.List;
 
 import org.Jamily.BlogPessoal.model.Postagem;
-import org.Jamily.BlogPessoal.reposity.PostagemReposity;
+import org.Jamily.BlogPessoal.reposity.PostagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PostagemController {
 	
 	@Autowired
-	private PostagemReposity repository;
+	private PostagemRepository repository;
 	
 	@GetMapping
 	public ResponseEntity<List<Postagem>> GetAll(){
