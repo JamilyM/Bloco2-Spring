@@ -3,7 +3,7 @@ package org.Jamily.BlogPessoal.Controller;
 import java.util.List;
 
 import org.Jamily.BlogPessoal.model.Tema;
-import org.Jamily.BlogPessoal.reposity.TemaRepository;
+import org.Jamily.BlogPessoal.repository.TemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

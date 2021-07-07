@@ -1,4 +1,4 @@
-package org.Jamily.BlogPessoal.reposity;
+package org.Jamily.BlogPessoal.repository;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;

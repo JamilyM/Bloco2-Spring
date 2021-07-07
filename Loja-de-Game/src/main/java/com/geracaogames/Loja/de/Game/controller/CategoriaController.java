@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.geracaogames.Loja.de.Game.model.Categoria;
+import com.geracaogames.Loja.de.Game.model.categoria;
 import com.geracaogames.Loja.de.Game.repository.CategoriaRepository;
 
 
@@ -28,8 +27,8 @@ public class CategoriaController {
 	public CategoriaRepository categoriaR;
 
 	@GetMapping("/todos")
-	public ResponseEntity<List<Categoria>> buscartodasCategoria() {
-		List<Categoria> listaDeCategoria = categoriaR.findAll();
+	public ResponseEntity<List<categoria>> buscartodasCategoria() {
+		List<categoria> listaDeCategoria = categoriaR.findAll();
 		if (listaDeCategoria.isEmpty()) {
 			return ResponseEntity.status(200).body(listaDeCategoria);
 		} else {
@@ -38,19 +37,19 @@ public class CategoriaController {
 	}
 
 	@GetMapping("/id/{id_Categoria}")
-	public ResponseEntity<Categoria> pegarCategoriaPorId(@PathVariable(value = "id_Categoria") Long idCategoria) {
+	public ResponseEntity<categoria> pegarCategoriaPorId(@PathVariable(value = "id_Categoria") Long idCategoria) {
 		return categoriaR.findById(idCategoria).map(categoria -> ResponseEntity.status(200).body(categoria))
 				.orElse(ResponseEntity.status(204).build());
 	}
 
 	
 	@PostMapping("/adicionar")
-	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria) {
+	public ResponseEntity<categoria> post(@Valid @RequestBody categoria categoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaR.save(categoria));
 	}
 
 	@PutMapping("/editar/{id_Categoria}")
-	public ResponseEntity<Categoria> put(@RequestBody Categoria categoria,
+	public ResponseEntity<categoria> put(@RequestBody categoria categoria,
 			@PathVariable(value = "id_Categoria") Long idCategoria) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaR.save(categoria));
 	}
