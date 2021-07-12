@@ -2,6 +2,7 @@ package org.Jamily.BlogPessoal.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,23 @@ public class Postagem {
     @ManyToOne
     @JsonIgnoreProperties("postagem")
     public Tema tema;
+    
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JsonIgnoreProperties("postagem")
+    public Usuario usuario;
+
+	public Postagem(@NotNull @Size(min = 5, max = 100) String titulo, @NotNull @Size(min = 10, max = 500) String texto,
+			Tema tema, Usuario usuario) {
+		super();
+		this.titulo = titulo;
+		Texto = texto;
+		this.tema = tema;
+		this.usuario = usuario;
+	}
+
+	public Postagem() {
+		super();
+	}
 
 
 	public Long getId() {

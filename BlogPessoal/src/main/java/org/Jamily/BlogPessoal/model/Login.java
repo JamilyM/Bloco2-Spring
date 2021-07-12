@@ -1,6 +1,10 @@
 package org.Jamily.BlogPessoal.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Login {
 
@@ -11,6 +15,10 @@ public class Login {
 	private String senha;
 
 	// private String Token;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	public Postagem postagem;
 
 	public String getUsuario() {
 		return usuario;

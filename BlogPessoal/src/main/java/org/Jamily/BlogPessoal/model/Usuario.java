@@ -1,14 +1,20 @@
 package org.Jamily.BlogPessoal.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -21,11 +27,32 @@ public class Usuario {
 	@NotNull
 	private String usuario;
 	
+	@Email
+	private String email;
+	
 	@NotBlank
 	private String nome;
 	
 	@NotEmpty (message = "Esse campo não pode ficar em branco")
 	private String senha;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	public List<Postagem> postagem;
+	
+
+	public Usuario(@NotNull String usuario, @NotBlank String nome,
+			@NotEmpty(message = "Esse campo não pode ficar em branco") String senha, @Email String email) {
+		super();
+		this.usuario = usuario;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+	}
+
+	public Usuario() {
+		super();
+	}
 
 	public Long getId() {
 		return id;
@@ -58,6 +85,15 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+		
 	
 
 }
