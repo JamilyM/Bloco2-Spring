@@ -1,4 +1,4 @@
-package org.Jamily.BlogPessoal.model;
+package com.geracaogames.Loja.de.Game.model;
 
 import java.util.List;
 
@@ -9,18 +9,18 @@ import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 public class Login {
-
+	
 	@NotBlank(message = "Esse campo não deve fica em branco")
 	private String usuario;
 
 	@NotBlank(message = "Esse campo não deve fica em branco")
 	private String senha;
 
-	// private String Token;
+	private String Token;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
-	public List<Postagem> postagem;
+	public List<Produto> produto;
 
 	public String getUsuario() {
 		return usuario;
@@ -38,18 +38,20 @@ public class Login {
 		this.senha = senha;
 	}
 
-	public List<Postagem> getPostagem() {
-		return postagem;
+	public String getToken() {
+		return Token;
 	}
 
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
+	public void setToken(String token) {
+		Token = token;
 	}
 
-	/*
-	 * public String getToken() { return Token; }
-	 * 
-	 * public void setToken(String token) { Token = token; }
-	 */
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
 
 }

@@ -20,13 +20,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-class PostagemTeste {
+class UsuarioTeste {
 	
-	@Disabled
+/*	@Disabled
 	@Test
 	void deveRetornarListadeUsuarioRetornaStatus200() {
-		ResponseEntity<?> resposta = TestRestTemplate.withBasicAuth("jamily", "123456")
+//		ResponseEntity<?> resposta = TestRestTemplate.withBasicAuth("jamily", "123456")
 				.exchange("/usuario/todos", HttpMethod.GET, null, String.class);
 		assertEquals(HttpStatus.OK, resposta.getStatusCode());
-	}
+	}*/
 }
