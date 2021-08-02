@@ -41,8 +41,11 @@ public class UsuarioService {
 				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
 				String authHeader = "Basic " + new String (encodedAuth);
 				
-				//login.get().setToken(authHeader);
+				login.get().setToken(authHeader);
 				login.get().setUsuario(usuario.get().getNome());
+				login.get().setId(usuario.get().getId());
+				login.get().setFoto(usuario.get().getFoto());
+				login.get().setTipo(usuario.get().getTipo());
 				
 				return login;
 			}
